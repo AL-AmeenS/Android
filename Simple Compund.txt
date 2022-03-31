@@ -1,0 +1,118 @@
+1.MainAcitivity2.java
+
+package com.example.menudriven;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity2 extends AppCompatActivity {
+    EditText edit1,edit2,edit3;
+    TextView text;
+    Button equal;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        edit1=(EditText) findViewById(R.id.ed1);
+        edit2=(EditText) findViewById(R.id.ed2);
+        edit3=(EditText) findViewById(R.id.ed3);
+        text=(TextView) findViewById(R.id.tx1);
+        equal=(Button) findViewById(R.id.bt1);
+        equal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                float s1,s2,s3,d;
+                s1=Float.parseFloat(edit1.getText().toString());
+                s2=Float.parseFloat(edit2.getText().toString());
+                s3=Float.parseFloat(edit3.getText().toString());
+                d=s1*s2*s3/100;
+                text.setText(String.valueOf(d).toString());
+            }
+        });
+
+    }
+}
+
+2.MainActivity2.xml file
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2">
+
+
+    <EditText
+        android:id="@+id/ed1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="principle"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"/>
+    <EditText
+        android:id="@+id/ed2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Rate"
+        android:layout_marginTop="300dp"
+        android:layout_centerHorizontal="true"/>
+    <EditText
+        android:id="@+id/ed3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Time"
+        android:layout_marginTop="400dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tx1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="500dp" />
+
+    <Button
+        android:id="@+id/bt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="500dp"
+        android:text="=" />
+
+</RelativeLayout>
+
+3.Menu.Xml file
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.menudriven.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/ci"
+        android:orderInCategory="101"
+        android:title="compound interest" />
+    <item
+        android:id="@+id/si"
+        android:orderInCategory="102"
+        android:title="simple interest" />
+</menu>
+
